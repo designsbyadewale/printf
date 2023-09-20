@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(list, format); /* Start processing variable list */
 
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
-	print_buffer(buffer, &buff_ind);
+	print_buffer(buffer, &buff_ind); /* Print any remaining character from the buffer */
 
 	va_end(list);
 
@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 void print_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
+		write(1, &buffer[0], *buff_ind); /* Write characters from the buffer */
 
-	*buff_ind = 0;
+	*buff_ind = 0; /* Reset the buffer index */
 }
